@@ -10,10 +10,23 @@ class ResumeApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Resume',
+      title: 'Resume - Lin Dion Aligsao',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.blueGrey),
+        scaffoldBackgroundColor: Colors.white,
+        colorScheme: ColorScheme.fromSeed(
+          seedColor: Colors.black,
+          background: Colors.white,
+          surface: Colors.white,
+        ),
+        textTheme: const TextTheme(
+          bodyMedium: TextStyle(
+            color: Colors.black,
+            fontSize: 12,
+            height: 1.4,
+            fontFamily: 'Arial', // Fallback to standard sans-serif
+          ),
+        ),
         useMaterial3: true,
       ),
       initialRoute: '/',
@@ -30,137 +43,39 @@ class ResumeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.grey[100],
-      appBar: AppBar(
-        title: const Text('My Resume'),
-        centerTitle: true,
-        backgroundColor: Theme.of(context).colorScheme.primary,
-        foregroundColor: Colors.white,
-        elevation: 0,
-      ),
       body: SafeArea(
         child: Center(
           child: ConstrainedBox(
-            constraints: const BoxConstraints(maxWidth: 800),
+            constraints: const BoxConstraints(maxWidth: 850),
             child: SingleChildScrollView(
-              padding: const EdgeInsets.all(24.0),
-              child: Card(
-                elevation: 4,
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(12),
-                ),
-                child: Padding(
-                  padding: const EdgeInsets.all(32.0),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      // Header Section
-                      const Center(
-                        child: Column(
-                          children: [
-                            CircleAvatar(
-                              radius: 50,
-                              backgroundColor: Colors.blueGrey,
-                              child: Icon(Icons.person, size: 60, color: Colors.white),
-                            ),
-                            SizedBox(height: 16),
-                            Text(
-                              'JUAN DELA CRUZ',
-                              style: TextStyle(
-                                fontSize: 32,
-                                fontWeight: FontWeight.bold,
-                                letterSpacing: 1.5,
-                              ),
-                              textAlign: TextAlign.center,
-                            ),
-                            SizedBox(height: 8),
-                            Text(
-                              'Software Engineer',
-                              style: TextStyle(
-                                fontSize: 20,
-                                color: Colors.blueGrey,
-                                fontWeight: FontWeight.w500,
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
-                      const SizedBox(height: 24),
-                      const Divider(thickness: 2),
-                      const SizedBox(height: 16),
-                      
-                      // Contact Info
-                      Wrap(
-                        spacing: 24,
-                        runSpacing: 12,
-                        alignment: WrapAlignment.center,
-                        children: [
-                          _buildContactInfo(Icons.email, 'juan.delacruz@email.com'),
-                          _buildContactInfo(Icons.phone, '+63 912 345 6789'),
-                          _buildContactInfo(Icons.location_on, 'Cebu City, Philippines'),
-                          _buildContactInfo(Icons.link, 'linkedin.com/in/juandelacruz'),
-                        ],
-                      ),
-                      
-                      const SizedBox(height: 32),
-                      
-                      // Professional Summary
-                      _buildSectionTitle('PROFESSIONAL SUMMARY'),
-                      const Text(
-                        'Highly motivated software engineer with experience in developing scalable web and mobile applications. Passionate about learning new technologies and solving complex problems to deliver high-quality digital solutions.',
-                        style: TextStyle(fontSize: 16, height: 1.5),
-                      ),
-                      
-                      const SizedBox(height: 32),
-                      
-                      // Experience Section
-                      _buildSectionTitle('EXPERIENCE'),
-                      _buildExperienceItem(
-                        title: 'Senior Flutter Developer',
-                        company: 'Tech Solutions Inc.',
-                        date: 'Jan 2023 - Present',
-                        description: 'Developed and maintained cross-platform mobile applications using Flutter. Collaborated with the design and backend teams to deliver features on time.',
-                      ),
-                      const SizedBox(height: 16),
-                      _buildExperienceItem(
-                        title: 'Web Developer',
-                        company: 'Creative Web Agency',
-                        date: 'Jun 2020 - Dec 2022',
-                        description: 'Created responsive websites and web applications using React, HTML, CSS, and JavaScript. Improved overall site performance by 30%.',
-                      ),
-                      
-                      const SizedBox(height: 32),
-                      
-                      // Education Section
-                      _buildSectionTitle('EDUCATION'),
-                      _buildExperienceItem(
-                        title: 'Bachelor of Science in Information Technology',
-                        company: 'University of San Carlos',
-                        date: '2016 - 2020',
-                        description: 'Graduated Cum Laude. Active member of the programming varsity team.',
-                      ),
-                      
-                      const SizedBox(height: 32),
-                      
-                      // Skills Section
-                      _buildSectionTitle('SKILLS'),
-                      Wrap(
-                        spacing: 8,
-                        runSpacing: 8,
-                        children: [
-                          _buildSkillChip('Flutter'),
-                          _buildSkillChip('Dart'),
-                          _buildSkillChip('JavaScript'),
-                          _buildSkillChip('React'),
-                          _buildSkillChip('Firebase'),
-                          _buildSkillChip('Git'),
-                          _buildSkillChip('Agile/Scrum'),
-                          _buildSkillChip('UI/UX Design'),
-                        ],
-                      ),
-                    ],
+              padding: const EdgeInsets.symmetric(horizontal: 24.0, vertical: 32.0),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  _buildHeader(context),
+                  const SizedBox(height: 16),
+                  _buildSectionTitle('SUMMARY'),
+                  _buildSummary(),
+                  const SizedBox(height: 24),
+                  _buildSectionTitle('PERSONAL PROFILE'),
+                  _buildPersonalProfile(),
+                  const SizedBox(height: 24),
+                  _buildSectionTitle('WORK EXPERIENCE'),
+                  _buildWorkExperience(),
+                  const SizedBox(height: 24),
+                  _buildSectionTitle('EDUCATION'),
+                  _buildEducation(),
+                  const SizedBox(height: 24),
+                  _buildSectionTitle('SKILLS'),
+                  _buildSkills(),
+                  const SizedBox(height: 24),
+                  _buildSectionTitle('CHARACTER REFERENCES'),
+                  const Text(
+                    'Available upon request.',
+                    style: TextStyle(fontSize: 12),
                   ),
-                ),
+                  const SizedBox(height: 48),
+                ],
               ),
             ),
           ),
@@ -169,89 +84,273 @@ class ResumeScreen extends StatelessWidget {
     );
   }
 
-  Widget _buildContactInfo(IconData icon, String text) {
-    return Row(
-      mainAxisSize: MainAxisSize.min,
+  Widget _buildHeader(BuildContext context) {
+    final isMobile = MediaQuery.of(context).size.width < 600;
+    
+    Widget textContent = Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Icon(icon, size: 20, color: Colors.blueGrey),
-        const SizedBox(width: 8),
-        Text(text, style: const TextStyle(fontSize: 14)),
+        const Text(
+          'LIN DION ALIGSAO',
+          style: TextStyle(
+            fontSize: 28,
+            fontWeight: FontWeight.bold,
+            letterSpacing: 1.2,
+          ),
+        ),
+        const SizedBox(height: 4),
+        Wrap(
+          spacing: 8,
+          runSpacing: 4,
+          children: const [
+            Text('09701280369'),
+            Text('|'),
+            Text('aligsaolindion02@gmail.com'),
+            Text('|'),
+            Text('Talisayan, Misamis Oriental, Philippines'),
+          ],
+        ),
+      ],
+    );
+
+    Widget imageContent = Container(
+      width: 100,
+      height: 100,
+      decoration: BoxDecoration(
+        color: Colors.grey[200],
+        border: Border.all(color: Colors.grey[400]!),
+      ),
+      child: const Icon(
+        Icons.person,
+        size: 64,
+        color: Colors.grey,
+      ),
+    );
+
+    return Column(
+      children: [
+        if (isMobile) ...[
+          imageContent,
+          const SizedBox(height: 16),
+          textContent,
+        ] else
+          Row(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Expanded(child: textContent),
+              const SizedBox(width: 16),
+              imageContent,
+            ],
+          ),
+        const SizedBox(height: 8),
+        const Divider(color: Colors.black, thickness: 2.0, height: 2.0),
       ],
     );
   }
 
   Widget _buildSectionTitle(String title) {
-    return Padding(
-      padding: const EdgeInsets.only(bottom: 12.0),
-      child: Text(
-        title,
-        style: const TextStyle(
-          fontSize: 22,
-          fontWeight: FontWeight.bold,
-          color: Colors.blueGrey,
-          letterSpacing: 1.2,
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Text(
+          title,
+          style: const TextStyle(
+            fontSize: 14,
+            fontWeight: FontWeight.bold,
+            letterSpacing: 0.5,
+          ),
         ),
+        const Divider(color: Colors.black, thickness: 1.5, height: 8),
+        const SizedBox(height: 8),
+      ],
+    );
+  }
+
+  Widget _buildSummary() {
+    return const Text(
+      'A motivated, reliable, and goal-oriented fresh graduate seeking an opportunity to begin a meaningful career in a dynamic and supportive work environment. Eager to apply my strong work ethic, adaptability, and willingness to learn in a role where I can contribute to team success, develop new skills, and grow professionally. Committed to continuously expanding my knowledge and abilities to maintain and enhance the quality of service I provide.',
+      textAlign: TextAlign.justify,
+    );
+  }
+
+  Widget _buildPersonalProfile() {
+    return LayoutBuilder(
+      builder: (context, constraints) {
+        double width = constraints.maxWidth;
+        // On very small screens, use 1 column. Otherwise 3 columns.
+        int columns = width < 450 ? 1 : 3;
+        double itemWidth = width / columns;
+
+        return Wrap(
+          runSpacing: 12,
+          children: [
+            SizedBox(
+              width: itemWidth,
+              child: _buildProfileItem('Age:', '22 years old'),
+            ),
+            SizedBox(
+              width: itemWidth,
+              child: _buildProfileItem('Civil Status:', 'Single'),
+            ),
+            SizedBox(
+              width: itemWidth,
+              child: _buildProfileItem('Nationality:', 'Filipino'),
+            ),
+            SizedBox(
+              width: itemWidth,
+              child: _buildProfileItem('Date of Birth:', 'January 2, 2004'),
+            ),
+            SizedBox(
+              width: itemWidth,
+              child: _buildProfileItem('Religion:', 'Roman Catholic'),
+            ),
+            SizedBox(
+              width: itemWidth,
+              child: _buildProfileItem('Language Spoken:', 'Filipino &\nEnglish'),
+            ),
+            SizedBox(
+              width: itemWidth,
+              child: _buildProfileItem('Place of Birth:', 'Talisayan,\nMisamis Oriental'),
+            ),
+            SizedBox(
+              width: itemWidth,
+              child: _buildProfileItem('Height:', '5\'3"'),
+            ),
+          ],
+        );
+      }
+    );
+  }
+
+  Widget _buildProfileItem(String label, String value) {
+    return Padding(
+      padding: const EdgeInsets.only(right: 8.0),
+      child: Row(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          const Text('•', style: TextStyle(fontWeight: FontWeight.bold)),
+          const SizedBox(width: 8),
+          Expanded(
+            child: RichText(
+              text: TextSpan(
+                style: const TextStyle(color: Colors.black, fontSize: 12, height: 1.4),
+                children: [
+                  TextSpan(text: '$label ', style: const TextStyle(fontWeight: FontWeight.bold)),
+                  TextSpan(text: value),
+                ],
+              ),
+            ),
+          ),
+        ],
       ),
     );
   }
 
-  Widget _buildExperienceItem({
-    required String title,
-    required String company,
-    required String date,
-    required String description,
-  }) {
+  Widget _buildWorkExperience() {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        const Text('OFFICE INTERN', style: TextStyle(fontWeight: FontWeight.bold, fontSize: 13)),
+        const SizedBox(height: 2),
+        RichText(
+          text: const TextSpan(
+            style: TextStyle(color: Colors.black, fontSize: 12),
+            children: [
+              TextSpan(text: 'Municipality of Balingoan ', style: TextStyle(fontWeight: FontWeight.bold)),
+              TextSpan(text: '| ', style: TextStyle(fontWeight: FontWeight.bold)),
+              TextSpan(text: 'Balingoan, Misamis Oriental', style: TextStyle(fontWeight: FontWeight.bold)),
+            ],
+          ),
+        ),
+        const Text(
+          'January 2026 – May 2026',
+          style: TextStyle(fontStyle: FontStyle.italic),
+        ),
+        const SizedBox(height: 8),
+        _buildBulletText('Prepared transmittal documents for Abstract of Inspection Reports (AIR) and encoded Purchase Request (PR) forms from vouchers, ensuring accurate and complete procurement records.'),
+        _buildBulletText('Managed the requesting and issuance of office supplies, furniture, ICT equipment, tools, and property assigned to various departments.'),
+        _buildBulletText('Assisted in general administrative tasks including filing, document organization, and office record management.'),
+      ],
+    );
+  }
+
+  Widget _buildEducation() {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Row(
           crossAxisAlignment: CrossAxisAlignment.start,
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            Expanded(
-              child: Text(
-                title,
-                style: const TextStyle(
-                  fontSize: 18,
-                  fontWeight: FontWeight.w600,
-                ),
-              ),
+            const Padding(
+              padding: EdgeInsets.only(top: 2.0, right: 8.0),
+              child: Text('•', style: TextStyle(fontWeight: FontWeight.bold)),
             ),
-            const SizedBox(width: 16),
-            Text(
-              date,
-              style: TextStyle(
-                fontSize: 14,
-                color: Colors.grey[600],
-                fontWeight: FontWeight.w500,
+            Expanded(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  const Text(
+                    'BACHELOR OF SCIENCE IN BUSINESS ADMINISTRATION MAJOR IN FINANCIAL MANAGEMENT',
+                    style: TextStyle(fontWeight: FontWeight.bold),
+                  ),
+                  const SizedBox(height: 2),
+                  RichText(
+                    text: const TextSpan(
+                      style: TextStyle(color: Colors.black, fontSize: 12),
+                      children: [
+                        TextSpan(text: 'Bukidnon State University  ', style: TextStyle(fontStyle: FontStyle.italic)),
+                        TextSpan(text: '|  '),
+                        TextSpan(text: 'Expected: July 2026', style: TextStyle(fontStyle: FontStyle.italic)),
+                      ],
+                    ),
+                  ),
+                ],
               ),
             ),
           ],
-        ),
-        const SizedBox(height: 4),
-        Text(
-          company,
-          style: TextStyle(
-            fontSize: 16,
-            color: Colors.blueGrey[700],
-            fontWeight: FontWeight.w500,
-          ),
-        ),
-        const SizedBox(height: 8),
-        Text(
-          description,
-          style: const TextStyle(fontSize: 15, height: 1.4),
         ),
       ],
     );
   }
 
-  Widget _buildSkillChip(String label) {
-    return Chip(
-      label: Text(label),
-      backgroundColor: Colors.blueGrey.withOpacity(0.1),
-      side: BorderSide.none,
-      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
+  Widget _buildSkills() {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        _buildSkillBullet('Microsoft Office (Word & Excel)', 'Document creation, data entry, and spreadsheet management'),
+        _buildSkillBullet('QuickBooks', 'Basic accounting and financial record management'),
+        _buildSkillBullet('Office Administration', 'Filing, procurement processing, transmittal preparation, and supply management'),
+        _buildSkillBullet('Data Entry & Records Management', 'Accurate encoding of purchase requests and inspection reports'),
+        _buildSkillBullet('Communication & Teamwork', 'Effective collaboration in a government office environment'),
+      ],
+    );
+  }
+
+  Widget _buildSkillBullet(String skill, String description) {
+    return Padding(
+      padding: const EdgeInsets.only(bottom: 4.0),
+      child: Row(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          const Padding(
+            padding: EdgeInsets.only(right: 8.0),
+            child: Text('•', style: TextStyle(fontWeight: FontWeight.bold)),
+          ),
+          Expanded(
+            child: RichText(
+              text: TextSpan(
+                style: const TextStyle(color: Colors.black, fontSize: 12, height: 1.4),
+                children: [
+                  TextSpan(text: skill, style: const TextStyle(fontWeight: FontWeight.bold)),
+                  const TextSpan(text: ' – '),
+                  TextSpan(text: description),
+                ],
+              ),
+            ),
+          ),
+        ],
+      ),
     );
   }
 }

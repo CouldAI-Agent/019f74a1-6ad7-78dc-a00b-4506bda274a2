@@ -1,23 +1,24 @@
-# Resume App
+# Resume ni Lin Dion Aligsao
 
-Usa ka limpyo ug propesyonal nga resume application nga hinimo gamit ang Flutter. Kini nga app nagpakita sa usa ka responsive nga layout nga mo-adjust sa mga mobile, tablet, ug desktop screens aron ipakita ang imong profile, mga kasinatian, edukasyon, ug mga skills.
+Usa ka propesyonal ug responsive nga resume (biodata) format nga gihimo gamit ang Flutter, basi sa eksakto nga detalye ug layout gikan sa gihatag nga image. Ang app adunay limpyo nga disenyo, naglakip sa personal nga impormasyon, work experience isip usa ka office intern, education, ug skills nga naka-layout sa formal nga pamaagi.
 
-## Mga Feature
-- Propesyonal nga layout para sa resume.
-- Responsive design: nindot tan-awon sa mobile phones ug sa dagkong mga screen sama sa web ug desktop.
-- Sayon ra ilisan ang sulod para mabutang nimo ang imong kaugalingong impormasyon.
+## Mga Feature:
+- **Responsive Layout:** Nindot tan-awon sa mobile man, tablet, o computer screen.
+- **Kumpleto nga Detalye:** Nakabutang na ang personal profile, work experience sa LGU Balingoan, education, ug uban pa nga skills nga may kalabutan sa office administration.
+- **Classic Print Style:** Gisunod ang porma sa usa ka standard printed nga resume nga naay mga black divider lines ug limpyo nga typography.
 
 ## Tech Stack
-- Flutter
+- Flutter (Cross-platform: Mobile, Web, ug Desktop)
 - Dart
 
-## Unsaon Pagpadagan
-1. Siguroa nga naka-install na ang Flutter sa imong system.
-2. I-run ang `flutter pub get` aron makuha ang mga dependencies.
-3. I-run ang app gamit ang `flutter run`.
+## Unsaon Pagpadagan (How to Run)
+Kon naa kay Flutter SDK sa imong computer, i-run lang kining mga commands sa terminal:
+```bash
+flutter pub get
+flutter run
+```
 
 ---
 
-## Mahitungod sa CouldAI
-
-Kini nga app gihimo pinaagi sa [CouldAI](https://could.ai), usa ka AI app builder para sa cross-platform apps nga mag-convert sa imong mga prompts ngadto sa tinuod nga native iOS, Android, Web, ug Desktop apps. Ang CouldAI naggamit og autonomous AI agents aron mag-architect, mag-build, mag-test, mag-deploy, ug mag-iterate sa mga applications nga andam na para sa production.
+## Bahin sa CouldAI
+Kini nga app gihimo pinaagi sa [CouldAI](https://could.ai), usa ka AI app builder alang sa cross-platform nga mga apps nga makahimo pag-usab sa mga prompts ngadto sa tinuod nga native iOS, Android, Web, ug Desktop apps. Kini ginagamitan og autonomous AI agents nga nag-architect, nag-build, nag-test, nag-deploy, ug nag-iterate sa mga production-ready nga aplikasyon.
